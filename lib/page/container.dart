@@ -11,6 +11,7 @@ class _MyConState extends State<MyCon> {
   var _yOffset = 0.0;
   var _blurRadius = 0.0;
   var _size = 1.0;
+  var _borderRadius = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +24,9 @@ class _MyConState extends State<MyCon> {
             height: _size,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.grey.shade300.withOpacity(_opacity),
+              // shape: BoxShape.circle,
+              color: Colors.grey.shade100.withOpacity(_opacity),
+              borderRadius: BorderRadius.circular(_borderRadius),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.shade500,
@@ -41,7 +43,7 @@ class _MyConState extends State<MyCon> {
               ],
             ),
             child: Text(
-              'Hello Flutter',
+              'Container',
               style: TextStyle(fontSize: 15),
             ),
           ),
@@ -88,9 +90,20 @@ class _MyConState extends State<MyCon> {
                 Text("Size"),
                 Slider(
                   value: _size,
-                  min: -0.0,
+                  min: 0,
                   max: 250.0,
-                  onChanged: (newValue) => {setState(() => _size = newValue)},
+                  onChanged: (newValue) => {
+                    setState(() => _size = newValue),
+                  },
+                ),
+                Text("BorderRadius"),
+                Slider(
+                  value: _borderRadius,
+                  min: 0,
+                  max: 200,
+                  onChanged: (newValue) => {
+                    setState(() => _borderRadius = newValue),
+                  },
                 ),
               ],
             ),
